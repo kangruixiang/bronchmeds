@@ -81,7 +81,7 @@
 	></textarea>
 
 	{#snippet renderMeds(medlist: MedList[], days: number)}
-		<ul class="list-none ml-4">
+		<ul class="list-none ml-2">
 			{#if medlist?.length > 0}
 				<li>
 					{#if medlist == longInsulinMedsFound}

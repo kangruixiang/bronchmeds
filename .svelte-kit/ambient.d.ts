@@ -38,8 +38,6 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const DriverData: string;
 	export const EFC_10180: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
@@ -96,7 +94,6 @@ declare module '$env/static/private' {
 	export const windir: string;
 	export const WIX: string;
 	export const ZES_ENABLE_SYSMAN: string;
-	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -140,8 +137,6 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		DriverData: string;
 		EFC_10180: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
@@ -198,7 +193,6 @@ declare module '$env/dynamic/private' {
 		windir: string;
 		WIX: string;
 		ZES_ENABLE_SYSMAN: string;
-		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
