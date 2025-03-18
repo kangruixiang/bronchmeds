@@ -20,6 +20,7 @@
 
 	let inputText = $state('');
 	let resultText = $state();
+	let includeBrand = $state(true);
 
 	let fourteenDayMedsFound = $state<MedList[]>();
 	let sevenDayMedsFound = $state<MedList[]>();
@@ -102,7 +103,7 @@
 					{/if}
 					{#each medlist as med, i}
 						{#if med.generic}
-							{med.generic}{/if}{#if med.brand}
+							{med.generic}{/if}{#if med.brand && includeBrand}
 							&nbsp;({med.brand}){/if}{i < medlist.length - 1 ? ', ' : ''}
 					{/each}
 				</li>
@@ -129,6 +130,15 @@
 	{/if}
 
 	{#if inputText}
+		<label for="" class="fieldset-label">
+			<input
+				type="checkbox"
+				onchange={parseMedications}
+				bind:checked={includeBrand}
+				class="toggle toggle-primary"
+			/>Include brand name
+		</label>
+
 		<div class="flex w-full flex-col md:flex-row gap-y-2 gap-x-2">
 			<button onclick={copy} class="btn flex items-center gap-x-2 btn-primary grow"
 				><Clipboard size={18} />Copy</button
