@@ -1,0 +1,122 @@
+<script lang="ts">
+	import Instructions from '$lib/components/Instructions.svelte';
+	import Meds from '$lib/components/Meds.svelte';
+	import {
+		oneDayMedsList,
+		threeDayMedsList,
+		fiveDayMedsList,
+		sevenDayMedsList,
+		twelveHoursMedsList,
+		zeroDayMedsList,
+		type MedList,
+		twoDayMedsList,
+		fourDayMedsList
+	} from '$lib/medications';
+	import { Clipboard } from '@lucide/svelte';
+
+	let inputText = $state('');
+	let resultText = $state();
+
+	let sevenDayMedsFound = $state<MedList[]>();
+	let fiveDayMedsFound = $state<MedList[]>();
+	let threeDayMedsFound = $state<MedList[]>();
+	let fourDayMedsFound = $state<MedList[]>();
+	let twoDayMedsFound = $state<MedList[]>();
+	let oneDayMedsFound = $state<MedList[]>();
+	let zeroDayMedsFound = $state<MedList[]>();
+	let twelveHourMedsFound = $state<MedList[]>();
+
+	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
+		return medList.filter(({ generic, brand }) => {
+			const brandAsList = brand.split(',').map((b) => b.trim().toLowerCase());
+			return (
+				(generic && lowerCaseText.includes(generic.toLowerCase())) ||
+				(brand && brandAsList.some((b) => lowerCaseText.includes(b)))
+			);
+		});
+	}
+
+	function parseMedications() {
+		let lowerCaseText = inputText.toLowerCase();
+
+		sevenDayMedsFound = filterMedsbyDays(lowerCaseText, sevenDayMedsList);
+		fiveDayMedsFound = filterMedsbyDays(lowerCaseText, fiveDayMedsList);
+		fourDayMedsFound = filterMedsbyDays(lowerCaseText, fourDayMedsList);
+		threeDayMedsFound = filterMedsbyDays(lowerCaseText, threeDayMedsList);
+		twoDayMedsFound = filterMedsbyDays(lowerCaseText, twoDayMedsList);
+		oneDayMedsFound = filterMedsbyDays(lowerCaseText, oneDayMedsList);
+		zeroDayMedsFound = filterMedsbyDays(lowerCaseText, zeroDayMedsList);
+		twelveHourMedsFound = filterMedsbyDays(lowerCaseText, twelveHoursMedsList);
+	}
+
+	async function copy() {
+		console.log(resultText);
+		await navigator.clipboard.writeText(
+			resultText.innerText
+				.replace(/\n\n\n/g, '\n\n')
+				.replace(/\n/g, '\r\n')
+				.replace(/ ,/g, ',')
+				.replace(/\s\./g, '.')
+		);
+	}
+</script>
+
+<h1 class="pb-10">Medications to Hold for Procedures</h1>
+
+<div class="flex flex-col gap-y-4">
+	<Instructions />
+
+	<textarea
+		bind:value={inputText}
+		oninput={parseMedications}
+		class="textarea w-full textarea-primary"
+		placeholder="Paste or Type Medication Names"
+	></textarea>
+
+	{#snippet renderMeds(medlist: MedList[], days: number)}
+		<ul class="list-none ml-4">
+			{#if medlist?.length > 0}
+				<li class="">
+					{#if days > 1}
+						&nbsp;&nbsp;– Hold for {days} day:
+					{:else if days == 1}
+						&nbsp;&nbsp;– Hold one day before and day of procedure:
+					{:else if days == 0}
+						&nbsp;&nbsp;– Hold morning of procedure:
+					{:else if days == 0.5}
+						&nbsp;&nbsp;– Hold for 12 hours:
+					{/if}
+					{#each medlist as med, i}
+						{med.generic}
+						{#if med.brand}
+							({med.brand}){/if}{i < medlist.length - 1 ? ', ' : ''}
+					{/each}
+				</li>
+			{/if}
+		</ul>
+	{/snippet}
+
+	{#if inputText}
+		<div bind:this={resultText} class="card px-4 py-6 card-dash bg-base-200">
+			– Medications to hold:
+			{@render renderMeds(sevenDayMedsFound, 7)}
+			{@render renderMeds(fiveDayMedsFound, 5)}
+			{@render renderMeds(fourDayMedsFound, 4)}
+			{@render renderMeds(threeDayMedsFound, 3)}
+			{@render renderMeds(twoDayMedsFound, 3)}
+			{@render renderMeds(oneDayMedsFound, 1)}
+			{@render renderMeds(zeroDayMedsFound, 0)}
+			{@render renderMeds(twelveHourMedsFound, 0.5)}
+		</div>
+	{/if}
+
+	{#if inputText}
+		<div class="flex w-full flex-col md:flex-row gap-y-2 gap-x-2">
+			<button onclick={copy} class="btn flex items-center gap-x-2 btn-primary grow"
+				><Clipboard size={18} />Copy</button
+			>
+			<button onclick={() => (inputText = '')} class="btn grow">Clear</button>
+		</div>
+	{/if}
+	<Meds />
+</div>
