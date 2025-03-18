@@ -10,7 +10,9 @@
 		zeroDayMedsList,
 		type MedList,
 		twoDayMedsList,
-		fourDayMedsList
+		fourDayMedsList,
+		mixedInsulinList,
+		longInsulinList
 	} from '$lib/medications';
 	import { Clipboard } from '@lucide/svelte';
 
@@ -25,6 +27,9 @@
 	let oneDayMedsFound = $state<MedList[]>();
 	let zeroDayMedsFound = $state<MedList[]>();
 	let twelveHourMedsFound = $state<MedList[]>();
+	let longInsulinMedsFound = $state<MedList[]>();
+	let mixedInsulinMedsFound = $state<MedList[]>();
+	let insulinPumpMedsFound = $state<MedList[]>();
 
 	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
 		return medList.filter(({ generic, brand }) => {
@@ -47,21 +52,17 @@
 		oneDayMedsFound = filterMedsbyDays(lowerCaseText, oneDayMedsList);
 		zeroDayMedsFound = filterMedsbyDays(lowerCaseText, zeroDayMedsList);
 		twelveHourMedsFound = filterMedsbyDays(lowerCaseText, twelveHoursMedsList);
+		longInsulinMedsFound = filterMedsbyDays(lowerCaseText, longInsulinList);
+		mixedInsulinMedsFound = filterMedsbyDays(lowerCaseText, mixedInsulinList);
 	}
 
 	async function copy() {
 		console.log(resultText);
-		await navigator.clipboard.writeText(
-			resultText.innerText
-				.replace(/\n\n\n/g, '\n\n')
-				.replace(/\n/g, '\r\n')
-				.replace(/ ,/g, ',')
-				.replace(/\s\./g, '.')
-		);
+		await navigator.clipboard.writeText(resultText.innerText);
 	}
 </script>
 
-<h1 class="pb-10">Medications to Hold for Procedures</h1>
+<h1 class="pb-10 text-primary font-semibold">Medications to Hold for Procedures</h1>
 
 <div class="flex flex-col gap-y-4">
 	<Instructions />
@@ -76,8 +77,15 @@
 	{#snippet renderMeds(medlist: MedList[], days: number)}
 		<ul class="list-none ml-4">
 			{#if medlist?.length > 0}
-				<li class="">
-					{#if days > 1}
+				<li>
+					{#if medlist == longInsulinMedsFound}
+						&nbsp;&nbsp;– Normal long acting insulin dose night prior unless known issues with
+						hypoglycemia and NPO:
+					{:else if medlist == mixedInsulinMedsFound}
+						&nbsp;&nbsp;– Hold vs 1/2 dose on morning of procedure:
+					{:else if medlist == insulinPumpMedsFound}
+						&nbsp;&nbsp;– Continue basal rate and hold bolus dosing:
+					{:else if days > 1}
 						&nbsp;&nbsp;– Hold for {days} day:
 					{:else if days == 1}
 						&nbsp;&nbsp;– Hold one day before and day of procedure:
@@ -87,9 +95,9 @@
 						&nbsp;&nbsp;– Hold for 12 hours:
 					{/if}
 					{#each medlist as med, i}
-						{med.generic}
-						{#if med.brand}
-							({med.brand}){/if}{i < medlist.length - 1 ? ', ' : ''}
+						{#if med.generic}
+							{med.generic}{/if}{#if med.brand}
+							&nbsp;({med.brand}){/if}{i < medlist.length - 1 ? ', ' : ''}
 					{/each}
 				</li>
 			{/if}
@@ -107,6 +115,8 @@
 			{@render renderMeds(oneDayMedsFound, 1)}
 			{@render renderMeds(zeroDayMedsFound, 0)}
 			{@render renderMeds(twelveHourMedsFound, 0.5)}
+			{@render renderMeds(longInsulinMedsFound, 0.5)}
+			{@render renderMeds(mixedInsulinMedsFound, 0.5)}
 		</div>
 	{/if}
 

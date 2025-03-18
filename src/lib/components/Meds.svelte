@@ -8,15 +8,23 @@
 		zeroDayMedsList,
 		type MedList,
 		twoDayMedsList,
-		fourDayMedsList
+		fourDayMedsList,
+		longInsulinList,
+		mixedInsulinList
 	} from '$lib/medications';
 	import { PillBottle } from '@lucide/svelte';
 </script>
 
 {#snippet renderMeds(medlist: MedList[], days: number)}
 	{#if medlist?.length > 0}
-		<div class="bg-base-200 rounded-lg px-8 pb-4 pt-4 prose max-w-none">
-			{#if days > 1}
+		<div class="bg-base-300 rounded-lg px-8 pb-4 pt-4 prose max-w-none">
+			{#if medlist == longInsulinList}
+				<h3>Long Acting Insulin</h3>
+				<h4>Normal dose night prior unless known issues with hypoglycemia and NPO.</h4>
+			{:else if medlist == mixedInsulinList}
+				<h3>Mixed Insulin</h3>
+				<h4>Hold vs 1/2 dose on morning of procedure.</h4>
+			{:else if days > 1}
 				<h3>
 					Hold for {days} Days
 				</h3>
@@ -27,7 +35,7 @@
 			{:else if days == 0.5}
 				<h3>Hold for 12 Hours</h3>
 			{/if}
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+			<div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-3">
 				{#each medlist as med}
 					<div>
 						{med.generic}
@@ -40,10 +48,10 @@
 	{/if}
 {/snippet}
 
-<div class="collapse border border-base-300 bg-base-100">
+<div class="collapse border border-base-300 bg-base-200">
 	<input type="checkbox" />
 	<div class="collapse-title font-semibold flex gap-x-2 items-center">
-		<PillBottle size={18} />Browse All Medications
+		<PillBottle size={18} />List All Medications
 	</div>
 	<div class="collapse-content">
 		<div class="pt-6"></div>
@@ -55,12 +63,16 @@
 		<div class="divider"></div>
 		{@render renderMeds(threeDayMedsList, 3)}
 		<div class="divider"></div>
-		{@render renderMeds(twoDayMedsList, 3)}
+		{@render renderMeds(twoDayMedsList, 2)}
 		<div class="divider"></div>
 		{@render renderMeds(oneDayMedsList, 1)}
 		<div class="divider"></div>
 		{@render renderMeds(twelveHoursMedsList, 0.5)}
 		<div class="divider"></div>
 		{@render renderMeds(zeroDayMedsList, 0)}
+		<div class="divider"></div>
+		{@render renderMeds(longInsulinList, 0)}
+		<div class="divider"></div>
+		{@render renderMeds(mixedInsulinList, 0)}
 	</div>
 </div>

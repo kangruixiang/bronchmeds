@@ -2,12 +2,12 @@
 	import { SquareChartGantt } from '@lucide/svelte';
 </script>
 
-<div class="collapse border border-base-300 bg-base-100">
+<div class="collapse bg-base-200 border border-base-300">
 	<input type="checkbox" />
 	<div class="collapse-title font-semibold flex gap-x-2 items-center">
 		<SquareChartGantt size={18} />Instructions
 	</div>
-	<div class="collapse-content prose max-w-none">
+	<div class="collapse-content bg-base-200 prose max-w-none">
 		<div class="pt-6"></div>
 		Copy Medications from Epic. On inpatient view you can do this by going to Home Meds:
 		<video src="inpatient.mp4" loop controls muted playsinline></video>

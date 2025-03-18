@@ -33,8 +33,8 @@ export const fiveDayMedsList: MedList[] = [
     brand: 'Prasugrel'
   },
   {
-    generic: 'persantine',
-    brand: 'Dipyridamole'
+    generic: 'dipyridamole',
+    brand: 'Persantine'
   },
   {
     generic: 'coumadin',
@@ -42,7 +42,7 @@ export const fiveDayMedsList: MedList[] = [
   },
   {
     generic: 'sildenafil',
-    brand: 'Viagra, Revatio'
+    brand: 'Viagra'
   },
   {
     generic: 'tadalafil',
@@ -95,20 +95,72 @@ export const threeDayMedsList: MedList[] = [
 ];
 export const twoDayMedsList: MedList[] = [
   {
-    generic: 'dsf',
-    brand: 'fdafsd'
+    generic: 'cilostazol',
+    brand: 'Pletal'
   }
 ];
 export const oneDayMedsList: MedList[] = [
   {
-    generic: 'fdsafsa',
-    brand: 'fdsafs'
-  }
+    generic: 'almotriptan',
+    brand: 'Axert'
+  },
+  {
+    generic: 'eletriptan',
+    brand: 'Relpax'
+  },
+  {
+    generic: 'frovatritan',
+    brand: 'Frova'
+  },
+  {
+    generic: 'naratriptan',
+    brand: 'Amerge'
+  },
+  {
+    generic: 'rizatriptan',
+    brand: 'Maxalt'
+  },
+  {
+    generic: 'sumatriptan',
+    brand: 'Imitrex'
+  },
+  {
+    generic: 'zolmitriptan',
+    brand: 'Zomig'
+  },
+  {
+    generic: 'cholestyramine',
+    brand: 'Questran'
+  },
+  {
+    generic: 'colestipol',
+    brand: 'Colestid'
+  },
+  {
+    generic: 'ezetimibe',
+    brand: 'Zetia'
+  },
+  {
+    generic: 'fenofibrate',
+    brand: 'Tricor'
+  },
+  {
+    generic: 'gemfibrozil',
+    brand: 'Lopid'
+  },
+  {
+    generic: 'niacin',
+    brand: 'Vitamin B3'
+  },
+  {
+    generic: 'Theophylline',
+    brand: 'Theolair, Uniphyl, Elixophyllin'
+  },
 ];
 export const zeroDayMedsList: MedList[] = [
   {
-    generic: 'lidocaine patch',
-    brand: ''
+    generic: 'lidocaine',
+    brand: 'Salonpas'
   },
   {
     generic: 'darifenacin',
@@ -139,8 +191,8 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Regurin, Sanctura'
   },
   {
-    generic: 'Adderall, Mydayis',
-    brand: ''
+    generic: 'stimulants',
+    brand: 'Adderall, Mydayis'
   },
   {
     generic: 'methylphenidate',
@@ -159,12 +211,8 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Actos'
   },
   {
-    generic: 'lispro',
-    brand: 'Humalog, Liprolog, Admelog'
-  },
-  {
-    generic: 'aspart',
-    brand: 'Novolog'
+    generic: 'short acting insulin',
+    brand: 'Novolog FlexPen, Novolog, Humalog, Liprolog, Admelog'
   },
   {
     generic: 'regular insulin',
@@ -184,11 +232,11 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'saxagliptin',
-    brand: ''
+    brand: 'Onglyza'
   },
   {
     generic: 'linagliptin',
-    brand: ''
+    brand: 'Tradjenta, Trajenta, Trazenta'
   },
   {
     generic: 'alogliptin',
@@ -243,8 +291,92 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Vyvanse, Elvanse'
   },
   {
+    generic: 'senna',
+    brand: 'Ex-Lax, Senokot'
+  },
+  {
+    generic: 'polyethylene glycol',
+    brand: 'PEG, MiraLAX, Glycolax'
+  },
+  {
     generic: 'docusate',
     brand: 'Colace'
+  },
+  {
+    generic: 'BisaCODYL',
+    brand: 'Dulcolax'
+  },
+  {
+    generic: 'magnesium citrate',
+    brand: ''
+  },
+  {
+    generic: 'lactulose',
+    brand: 'Cholac, Generlac, Constulose, Chronulac'
+  },
+  {
+    generic: 'pancreatic enzymes',
+    brand: 'Creon, Pancreaze, Pertzye'
+  },
+  {
+    generic: 'benazepril',
+    brand: 'Lotensin'
+  },
+  {
+    generic: 'lisinopril',
+    brand: 'Prinivil, Zestril, Qbrelis, Dapril'
+  },
+  {
+    generic: 'enalapril',
+    brand: 'Vasotec, Renitec, Enacard'
+  },
+  {
+    generic: 'ramipril',
+    brand: 'Altace'
+  },
+  {
+    generic: 'losartan',
+    brand: 'Cozaar'
+  },
+  {
+    generic: 'valsartan',
+    brand: 'Diovan, Entresto'
+  },
+  {
+    generic: 'irbesartan',
+    brand: 'Aprovel, Avapro'
+  },
+  {
+    generic: 'aliskiren',
+    brand: 'Tekturna, Rasilez'
+  },
+  {
+    generic: 'eplerenone',
+    brand: 'Inspra'
+  },
+  {
+    generic: 'bumetanide',
+    brand: 'Bumex, Burinex'
+  },
+  {
+    generic: 'furosemide',
+    brand: 'Lasix'
+  },
+  {
+    generic: 'torsemide',
+    brand: 'Demadex'
+  },
+  {
+    generic: 'hydrochlorothiazide',
+    brand: 'Hydrodiuril'
+  },
+  {
+    generic: 'triamterene',
+    brand: 'Dyrenium, Dytac'
+  },
+  {
+    generic: 'spironolactone',
+    brand: 'Aldactone, Carospir'
   },
 ];
 export const twelveHoursMedsList: MedList[] = [
@@ -253,3 +385,20 @@ export const twelveHoursMedsList: MedList[] = [
     brand: 'Lovenox'
   }
 ];
+export const longInsulinList: MedList[] = [
+  {
+    generic: 'insulin glargine',
+    brand: 'LANTUS SoloStar, Toujeo'
+  }
+]
+export const mixedInsulinList: MedList[] = [
+  {
+    generic: 'insulin NPH',
+    brand: 'Novolin N, Humulin N, Insulatard'
+  },
+  {
+    generic: 'premixed insulin',
+    brand: 'Novolog 70/30,  NovolOG 70/30,  NovolOG 75/25'
+  },
+]
+
