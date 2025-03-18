@@ -4,6 +4,103 @@ export type MedList = {
 };
 
 //effient both 5 and 7 days
+export const fourteenDayMedsList: MedList[] = [
+  {
+    generic: 'Agaricus Mushroom',
+    brand: ''
+  },
+  {
+    generic: 'Aloe',
+    brand: ''
+  },
+  {
+    generic: 'Alpha-lipoic acid',
+    brand: ''
+  },
+  {
+    generic: 'Ginseng',
+    brand: ''
+  },
+  {
+    generic: 'Andrographisd',
+    brand: ''
+  },
+  {
+    generic: 'Arnica',
+    brand: ''
+  },
+  {
+    generic: 'Banaba',
+    brand: ''
+  },
+  {
+    generic: 'Bitter Orange',
+    brand: ''
+  },
+  {
+    generic: 'Caffeine supplements',
+    brand: ''
+  },
+  {
+    generic: 'Black Tea',
+    brand: ''
+  },
+  {
+    generic: 'Casein peptides',
+    brand: ''
+  },
+  {
+    generic: 'Coenzyme Q10',
+    brand: ''
+  },
+  {
+    generic: 'Echinacea',
+    brand: ''
+  },
+  {
+    generic: 'Fenugreek',
+    brand: ''
+  },
+  {
+    generic: 'Garlic',
+    brand: ''
+  },
+  {
+    generic: 'Ginger',
+    brand: ''
+  },
+  {
+    generic: 'Ginkgo',
+    brand: ''
+  },
+  {
+    generic: 'Grapefruit',
+    brand: ''
+  },
+  {
+    generic: 'Horny goat weed',
+    brand: ''
+  },
+  {
+    generic: 'Kava',
+    brand: ''
+  },
+  {
+    generic: 'Saw Palmetto',
+    brand: ''
+  },
+  {
+    generic: "St. John's wort",
+    brand: ''
+  },
+  {
+    generic: 'Turmeric',
+    brand: ''
+  }, {
+    generic: 'Vitamin E',
+    brand: ''
+  },
+];
 
 export const sevenDayMedsList: MedList[] = [
   {
@@ -15,8 +112,24 @@ export const sevenDayMedsList: MedList[] = [
     brand: 'Mounjaro'
   },
   {
-    generic: 'aspirin and dipyridamole',
+    generic: 'dipyridamole-aspirin',
     brand: 'Aggrenox'
+  },
+  {
+    generic: 'mycophenolate',
+    brand: 'CellCept'
+  },
+  {
+    generic: 'azathioprine',
+    brand: 'Azasan, Imuran, Jayempi'
+  },
+  {
+    generic: 'cyclosporine',
+    brand: 'Sandimmune'
+  },
+  {
+    generic: 'tacrolimus',
+    brand: 'Prograf, Advagraf, Protopic'
   },
 ];
 export const fiveDayMedsList: MedList[] = [
@@ -92,11 +205,31 @@ export const threeDayMedsList: MedList[] = [
     generic: 'dabigatran',
     brand: 'Pradaxa'
   },
+  {
+    generic: 'tofacitinib',
+    brand: 'Xeljanz'
+  },
+  {
+    generic: 'baricitinib',
+    brand: 'Olumiant'
+  },
+  {
+    generic: 'upadacitinib',
+    brand: 'Rinvoq'
+  },
 ];
 export const twoDayMedsList: MedList[] = [
   {
     generic: 'cilostazol',
     brand: 'Pletal'
+  },
+  {
+    generic: 'chondroitin',
+    brand: ''
+  },
+  {
+    generic: 'glucosamine',
+    brand: ''
   }
 ];
 export const oneDayMedsList: MedList[] = [
@@ -150,11 +283,15 @@ export const oneDayMedsList: MedList[] = [
   },
   {
     generic: 'niacin',
-    brand: 'Vitamin B3'
+    brand: 'Vitamin B3, Niaspan, Sio-Niacin'
+  },
+  {
+    generic: 'theophylline',
+    brand: 'Theolair, Uniphyl, Elixophyllin'
   },
   {
     generic: 'Theophylline',
-    brand: 'Theolair, Uniphyl, Elixophyllin'
+    brand: '5-hydroxytrypophan'
   },
 ];
 export const zeroDayMedsList: MedList[] = [
@@ -172,7 +309,7 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'flavoxate',
-    brand: ''
+    brand: 'Urispas'
   },
   {
     generic: 'oxybutynin',
@@ -215,8 +352,8 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Novolog FlexPen, Novolog, Humalog, Liprolog, Admelog'
   },
   {
-    generic: 'regular insulin',
-    brand: ''
+    generic: 'insulin regular',
+    brand: 'Humulin R, Novolin R'
   },
   {
     generic: 'glulisine',
@@ -399,6 +536,60 @@ export const mixedInsulinList: MedList[] = [
   {
     generic: 'premixed insulin',
     brand: 'Novolog 70/30,  NovolOG 70/30,  NovolOG 75/25'
+  },
+]
+export const biologicList: MedList[] = [
+  {
+    generic: 'infliximab',
+    brand: 'Remicade'
+  },
+  {
+    generic: 'adalimumab',
+    brand: 'Humira'
+  },
+  {
+    generic: 'etanercept',
+    brand: 'Enbrel'
+  },
+  {
+    generic: 'abatacept',
+    brand: 'Orencia'
+  },
+  {
+    generic: 'certolizumab',
+    brand: 'Cimzia'
+  },
+  {
+    generic: 'tocilizumab',
+    brand: 'Actemra'
+  },
+  {
+    generic: 'anakinra',
+    brand: 'Kineret'
+  },
+  {
+    generic: 'secukinumab',
+    brand: 'Cosentyx'
+  },
+  {
+    generic: 'ustekinumab',
+    brand: 'Stelara'
+  },
+  {
+    generic: 'ixekizumab',
+    brand: 'Taltz'
+  },
+  {
+    generic: 'guselkumab',
+    brand: 'Tremfya'
+  },
+  {
+    generic: 'rituximab',
+    brand: 'Rituxan'
+  },
+  {
+    generic: 'belimumab',
+    brand: 'Benlysta'
   },
 ]
 

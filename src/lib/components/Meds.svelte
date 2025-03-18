@@ -10,7 +10,8 @@
 		twoDayMedsList,
 		fourDayMedsList,
 		longInsulinList,
-		mixedInsulinList
+		mixedInsulinList,
+		fourteenDayMedsList
 	} from '$lib/medications';
 	import { PillBottle } from '@lucide/svelte';
 </script>
@@ -55,6 +56,8 @@
 	</div>
 	<div class="collapse-content">
 		<div class="pt-6"></div>
+		{@render renderMeds(fourteenDayMedsList, 14)}
+		<div class="divider"></div>
 		{@render renderMeds(sevenDayMedsList, 7)}
 		<div class="divider"></div>
 		{@render renderMeds(fiveDayMedsList, 5)}
@@ -74,5 +77,10 @@
 		{@render renderMeds(longInsulinList, 0)}
 		<div class="divider"></div>
 		{@render renderMeds(mixedInsulinList, 0)}
+		<div class="divider"></div>
+		<div class="bg-base-300 rounded-lg px-8 pb-4 pt-4 prose max-w-none">
+			<h3>Biologics</h3>
+			<img src="biologics.png" alt="" />
+		</div>
 	</div>
 </div>

@@ -12,13 +12,16 @@
 		twoDayMedsList,
 		fourDayMedsList,
 		mixedInsulinList,
-		longInsulinList
+		longInsulinList,
+		fourteenDayMedsList,
+		biologicList
 	} from '$lib/medications';
 	import { Clipboard } from '@lucide/svelte';
 
 	let inputText = $state('');
 	let resultText = $state();
 
+	let fourteenDayMedsFound = $state<MedList[]>();
 	let sevenDayMedsFound = $state<MedList[]>();
 	let fiveDayMedsFound = $state<MedList[]>();
 	let threeDayMedsFound = $state<MedList[]>();
@@ -30,6 +33,7 @@
 	let longInsulinMedsFound = $state<MedList[]>();
 	let mixedInsulinMedsFound = $state<MedList[]>();
 	let insulinPumpMedsFound = $state<MedList[]>();
+	let biologicMedsFound = $state<MedList[]>();
 
 	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
 		return medList.filter(({ generic, brand }) => {
@@ -44,6 +48,7 @@
 	function parseMedications() {
 		let lowerCaseText = inputText.toLowerCase();
 
+		fourteenDayMedsFound = filterMedsbyDays(lowerCaseText, fourteenDayMedsList);
 		sevenDayMedsFound = filterMedsbyDays(lowerCaseText, sevenDayMedsList);
 		fiveDayMedsFound = filterMedsbyDays(lowerCaseText, fiveDayMedsList);
 		fourDayMedsFound = filterMedsbyDays(lowerCaseText, fourDayMedsList);
@@ -54,6 +59,7 @@
 		twelveHourMedsFound = filterMedsbyDays(lowerCaseText, twelveHoursMedsList);
 		longInsulinMedsFound = filterMedsbyDays(lowerCaseText, longInsulinList);
 		mixedInsulinMedsFound = filterMedsbyDays(lowerCaseText, mixedInsulinList);
+		biologicMedsFound = filterMedsbyDays(lowerCaseText, biologicList);
 	}
 
 	async function copy() {
@@ -85,6 +91,8 @@
 						&nbsp;&nbsp;– Hold vs 1/2 dose on morning of procedure:
 					{:else if medlist == insulinPumpMedsFound}
 						&nbsp;&nbsp;– Continue basal rate and hold bolus dosing:
+					{:else if medlist == biologicMedsFound}
+						&nbsp;&nbsp;– Refer to biologics section below for optimal timing:
 					{:else if days > 1}
 						&nbsp;&nbsp;– Hold for {days} day:
 					{:else if days == 1}
@@ -107,6 +115,7 @@
 	{#if inputText}
 		<div bind:this={resultText} class="card px-4 py-6 card-dash bg-base-200">
 			– Medications to hold:
+			{@render renderMeds(fourteenDayMedsFound, 14)}
 			{@render renderMeds(sevenDayMedsFound, 7)}
 			{@render renderMeds(fiveDayMedsFound, 5)}
 			{@render renderMeds(fourDayMedsFound, 4)}
@@ -117,6 +126,7 @@
 			{@render renderMeds(twelveHourMedsFound, 0.5)}
 			{@render renderMeds(longInsulinMedsFound, 0.5)}
 			{@render renderMeds(mixedInsulinMedsFound, 0.5)}
+			{@render renderMeds(biologicMedsFound, 0.5)}
 		</div>
 	{/if}
 
