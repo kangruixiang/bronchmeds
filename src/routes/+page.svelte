@@ -71,8 +71,6 @@
 <h1 class="pb-10 text-primary font-semibold">Medications to Hold for Procedures</h1>
 
 <div class="flex flex-col gap-y-4">
-	<Instructions />
-
 	<textarea
 		bind:value={inputText}
 		oninput={parseMedications}
@@ -138,5 +136,6 @@
 			<button onclick={() => (inputText = '')} class="btn grow">Clear</button>
 		</div>
 	{/if}
+	<Instructions />
 	<Meds />
 </div>
