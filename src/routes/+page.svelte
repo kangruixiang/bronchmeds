@@ -16,7 +16,7 @@
 		fourteenDayMedsList,
 		biologicList
 	} from '$lib/medications';
-	import { Clipboard } from '@lucide/svelte';
+	import { Clipboard, Github, Mail } from '@lucide/svelte';
 
 	let inputText = $state('');
 	let resultText = $state();
@@ -37,13 +37,25 @@
 	let biologicMedsFound = $state<MedList[]>();
 
 	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
-		return medList.filter(({ generic, brand }) => {
-			const brandAsList = brand.split(',').map((b) => b.trim().toLowerCase());
-			return (
-				(generic && lowerCaseText.includes(generic.toLowerCase())) ||
-				(brand && brandAsList.some((b) => lowerCaseText.includes(b)))
-			);
-		});
+		return medList
+			.map(({ generic, brand }) => {
+				// convert brand string to a list
+				const brandAsList = brand.split(',').map((b) => b.trim().toLowerCase());
+
+				// find brand name
+				const matchedBrand = brandAsList.find((b) => lowerCaseText.includes(b)) || '';
+
+				if (lowerCaseText.includes(generic.toLowerCase()) || matchedBrand) {
+					return {
+						generic,
+						brand,
+						matchedBrand: matchedBrand
+							? matchedBrand.charAt(0).toUpperCase() + matchedBrand.slice(1)
+							: ''
+					};
+				}
+			})
+			.filter(Boolean);
 	}
 
 	function parseMedications() {
@@ -69,7 +81,11 @@
 	}
 </script>
 
-<h1 class="pb-10 text-primary font-semibold">Medications to Hold for Procedures</h1>
+<h1 class="pb-3 text-primary font-semibold">Medications to Hold for Procedures</h1>
+<p class="prose max-w-none pb-4">
+	Use this page to quickly generate list of medications that need to be held for outpatient
+	procedures.
+</p>
 
 <div class="flex flex-col gap-y-4">
 	<textarea
@@ -103,8 +119,8 @@
 					{/if}
 					{#each medlist as med, i}
 						{#if med.generic}
-							{med.generic}{/if}{#if med.brand && includeBrand}
-							&nbsp;({med.brand}){/if}{i < medlist.length - 1 ? ', ' : ''}
+							{med.generic}{/if}{#if med.matchedBrand && includeBrand}
+							&nbsp;({med.matchedBrand}){/if}{i < medlist.length - 1 ? ', ' : ''}
 					{/each}
 				</li>
 			{/if}
@@ -148,4 +164,10 @@
 	{/if}
 	<Instructions />
 	<Meds />
+</div>
+
+<div class="mt-4 justify-end text-sm text-right flex gap-x-2">
+	Made by Kang.
+	<a href="mailto:kxiang.wakehealth.edu"><Mail /></a>
+	<a href="https://github.com/kangruixiang/bronchmeds"><Github /></a>
 </div>

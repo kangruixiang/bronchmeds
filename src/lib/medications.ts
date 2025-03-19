@@ -1,92 +1,93 @@
 export type MedList = {
   generic: string;
   brand: string;
+  matchedBrand?: string;
 };
 
 //effient both 5 and 7 days
 export const fourteenDayMedsList: MedList[] = [
   {
-    generic: 'Agaricus Mushroom',
+    generic: 'agaricus mushroom',
     brand: ''
   },
   {
-    generic: 'Aloe',
+    generic: 'aloe',
     brand: ''
   },
   {
-    generic: 'Alpha-lipoic acid',
+    generic: 'alpha-lipoic acid',
     brand: ''
   },
   {
-    generic: 'Ginseng',
+    generic: 'ginseng',
     brand: ''
   },
   {
-    generic: 'Andrographisd',
+    generic: 'andrographisd',
     brand: ''
   },
   {
-    generic: 'Arnica',
+    generic: 'arnica',
     brand: ''
   },
   {
-    generic: 'Banaba',
+    generic: 'banaba',
     brand: ''
   },
   {
-    generic: 'Bitter Orange',
+    generic: 'bitter orange',
     brand: ''
   },
   {
-    generic: 'Caffeine supplements',
+    generic: 'caffeine supplements',
     brand: ''
   },
   {
-    generic: 'Black Tea',
+    generic: 'black tea',
     brand: ''
   },
   {
-    generic: 'Casein peptides',
+    generic: 'casein peptides',
     brand: ''
   },
   {
-    generic: 'Coenzyme Q10',
+    generic: 'coenzyme Q10',
     brand: ''
   },
   {
-    generic: 'Echinacea',
+    generic: 'echinacea',
     brand: ''
   },
   {
-    generic: 'Fenugreek',
+    generic: 'fenugreek',
     brand: ''
   },
   {
-    generic: 'Garlic',
+    generic: 'garlic',
     brand: ''
   },
   {
-    generic: 'Ginger',
+    generic: 'ginger',
     brand: ''
   },
   {
-    generic: 'Ginkgo',
+    generic: 'ginkgo',
     brand: ''
   },
   {
-    generic: 'Grapefruit',
+    generic: 'grapefruit',
     brand: ''
   },
   {
-    generic: 'Horny goat weed',
+    generic: 'horny goat weed',
     brand: ''
   },
   {
-    generic: 'Kava',
+    generic: 'kava',
     brand: ''
   },
   {
-    generic: 'Saw Palmetto',
+    generic: 'saw palmetto',
     brand: ''
   },
   {
@@ -94,10 +95,10 @@ export const fourteenDayMedsList: MedList[] = [
     brand: ''
   },
   {
-    generic: 'Turmeric',
+    generic: 'turmeric',
     brand: ''
   }, {
-    generic: 'Vitamin E',
+    generic: 'vitamin E',
     brand: ''
   },
 ];
@@ -290,8 +291,8 @@ export const oneDayMedsList: MedList[] = [
     brand: 'Theolair, Uniphyl, Elixophyllin'
   },
   {
-    generic: 'Theophylline',
-    brand: '5-hydroxytrypophan'
+    generic: '5-hydroxytrypophan',
+    brand: ''
   },
 ];
 export const zeroDayMedsList: MedList[] = [
@@ -328,7 +329,7 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Regurin, Sanctura'
   },
   {
-    generic: 'stimulants',
+    generic: 'amphetamine stimulants',
     brand: 'Adderall, Mydayis'
   },
   {
