@@ -160,7 +160,7 @@ export const fiveDayMedsList: MedList[] = [
   },
   {
     generic: 'tadalafil',
-    brand: 'Cialis'
+    brand: 'Cialis, Adcirca'
   },
   {
     generic: 'vardenafil',

@@ -53,12 +53,16 @@
 				let matchedBrand = brandAsList.find((b) => lowerCaseText.includes(b)) || '';
 
 				if (matchedGeneric || matchedBrand) {
-					if (matchedBrand == 'revatio') {
+					if (matchedBrand == 'revatio' || matchedBrand == 'adcirca') {
 						return undefined;
 					}
 
 					if (matchedGeneric == 'sildenafil') {
 						matchedGeneric = "sildenafil (for ED or Raynaud's; do not hold for PHTN)";
+					}
+
+					if (matchedGeneric == 'tadalafil') {
+						matchedGeneric = "tadalafil (for ED or Raynaud's; do not hold for PHTN)";
 					}
 
 					return {
