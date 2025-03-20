@@ -102,7 +102,6 @@ export const fourteenDayMedsList: MedList[] = [
     brand: ''
   },
 ];
-
 export const sevenDayMedsList: MedList[] = [
   {
     generic: 'semaglutide',
@@ -349,10 +348,6 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Actos'
   },
   {
-    generic: 'short acting insulin',
-    brand: 'Novolog FlexPen, Novolog, Humalog, Liprolog, Admelog'
-  },
-  {
     generic: 'insulin regular',
     brand: 'Humulin R, Novolin R'
   },
@@ -379,6 +374,10 @@ export const zeroDayMedsList: MedList[] = [
   {
     generic: 'alogliptin',
     brand: 'Nesina, Vipidia'
+  },
+  {
+    generic: 'glipizide',
+    brand: 'Glucotrol'
   },
   {
     generic: 'sodium citrate',
@@ -493,6 +492,10 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Inspra'
   },
   {
+    generic: 'olmesartan',
+    brand: 'Benicar'
+  },
+  {
     generic: 'bumetanide',
     brand: 'Bumex, Burinex'
   },
@@ -516,6 +519,18 @@ export const zeroDayMedsList: MedList[] = [
     generic: 'spironolactone',
     brand: 'Aldactone, Carospir'
   },
+  {
+    generic: 'tamsulosin',
+    brand: 'Flomax'
+  },
+  {
+    generic: 'ferrous sulfate',
+    brand: ''
+  },
+  {
+    generic: 'insulin aspart',
+    brand: 'Novolog FlexPen, Novolog, Novolog Relion, Humalog, Liprolog, Admelog, Fiasp FlexTouch'
+  },
 ];
 export const twelveHoursMedsList: MedList[] = [
   {
@@ -527,7 +542,11 @@ export const longInsulinList: MedList[] = [
   {
     generic: 'insulin glargine',
     brand: 'LANTUS SoloStar, Toujeo'
-  }
+  },
+  {
+    generic: 'insulin degludec',
+    brand: 'Tresiba'
+  },
 ]
 export const mixedInsulinList: MedList[] = [
   {
@@ -536,8 +555,9 @@ export const mixedInsulinList: MedList[] = [
   },
   {
     generic: 'premixed insulin',
-    brand: 'Novolog 70/30,  NovolOG 70/30,  NovolOG 75/25'
+    brand: 'Novolog Mix 70/30,  Novolog 70/30,  Novolog Mix 75/25, Novolog 75/25'
   },
+
 ]
 export const biologicList: MedList[] = [
   {

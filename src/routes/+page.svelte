@@ -49,9 +49,7 @@
 					return {
 						generic,
 						brand,
-						matchedBrand: matchedBrand
-							? matchedBrand.charAt(0).toUpperCase() + matchedBrand.slice(1)
-							: ''
+						matchedBrand: matchedBrand ? matchedBrand : ''
 					};
 				}
 			})
@@ -100,10 +98,9 @@
 			{#if medlist?.length > 0}
 				<li>
 					{#if medlist == longInsulinMedsFound}
-						&nbsp;&nbsp;– Normal long acting insulin dose night prior unless known issues with
-						hypoglycemia and NPO:
+						&nbsp;&nbsp;– Normal long acting insulin dose vs half dose night prior:
 					{:else if medlist == mixedInsulinMedsFound}
-						&nbsp;&nbsp;– Hold vs 1/2 dose on morning of procedure:
+						&nbsp;&nbsp;– Hold pre-mixed insulin vs half dose on morning of procedure:
 					{:else if medlist == insulinPumpMedsFound}
 						&nbsp;&nbsp;– Continue basal rate and hold bolus dosing:
 					{:else if medlist == biologicMedsFound}
@@ -120,7 +117,9 @@
 					{#each medlist as med, i}
 						{#if med.generic}
 							{med.generic}{/if}{#if med.matchedBrand && includeBrand}
-							&nbsp;({med.matchedBrand}){/if}{i < medlist.length - 1 ? ', ' : ''}
+							&nbsp;<span class="capitalize">({med.matchedBrand})</span>{/if}{i < medlist.length - 1
+							? ', '
+							: ''}
 					{/each}
 				</li>
 			{/if}
