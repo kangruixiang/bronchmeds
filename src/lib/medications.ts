@@ -155,8 +155,8 @@ export const fiveDayMedsList: MedList[] = [
     brand: 'Warfarin'
   },
   {
-    generic: "sildenafil (for ED or Raynaud's; do not hold for PHTN)",
-    brand: 'Viagra'
+    generic: "sildenafil",
+    brand: 'Viagra, Revatio'
   },
   {
     generic: 'tadalafil',
@@ -533,7 +533,7 @@ export const zeroDayMedsList: MedList[] = [
     brand: ''
   },
   {
-    generic: 'insulin aspart',
+    generic: 'insulin aspart, insulin lispro',
     brand: 'Novolog FlexPen, Novolog, Novolog Relion, Humalog, Liprolog, Admelog, Fiasp FlexTouch'
   },
 ];

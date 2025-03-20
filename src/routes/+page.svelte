@@ -40,17 +40,30 @@
 	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
 		return medList
 			.map(({ generic, brand }) => {
+				// convert generic string to a list
+				const genericAsList = generic.split(',').map((b) => b.trim().toLowerCase());
+
 				// convert brand string to a list
 				const brandAsList = brand.split(',').map((b) => b.trim().toLowerCase());
 
-				// find brand name
-				const matchedBrand = brandAsList.find((b) => lowerCaseText.includes(b)) || '';
+				// find generic name
+				let matchedGeneric = genericAsList.find((b) => lowerCaseText.includes(b));
 
-				if (lowerCaseText.includes(generic.toLowerCase()) || matchedBrand) {
+				// find brand name
+				let matchedBrand = brandAsList.find((b) => lowerCaseText.includes(b)) || '';
+
+				if (matchedGeneric || matchedBrand) {
+					if (matchedBrand == 'revatio') {
+						return undefined;
+					}
+
+					if (matchedGeneric == 'sildenafil') {
+						matchedGeneric = "sildenafil (for ED or Raynaud's; do not hold for PHTN)";
+					}
+
 					return {
-						generic,
-						brand,
-						matchedBrand: matchedBrand ? matchedBrand : ''
+						matchedGeneric,
+						matchedBrand
 					};
 				}
 			})
@@ -131,11 +144,13 @@
 						&nbsp;&nbsp;– Hold for 12 hours:
 					{/if}
 					{#each medlist as med, i}
-						{#if med.generic}
-							{med.generic}{/if}{#if med.matchedBrand && includeBrand}
-							&nbsp;<span class="capitalize">({med.matchedBrand})</span>{/if}{i < medlist.length - 1
-							? ', '
-							: ''}
+						{#if med.matchedGeneric}
+							{med.matchedGeneric}{#if med.matchedBrand && includeBrand}
+								&nbsp;<span class="capitalize">({med.matchedBrand})</span>
+							{/if}
+						{:else}
+							<span class="capitalize">{med.matchedBrand}</span>
+						{/if}{i < medlist.length - 1 ? ', ' : ''}
 					{/each}
 				</li>
 			{/if}
