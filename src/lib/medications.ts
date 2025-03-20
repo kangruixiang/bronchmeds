@@ -1,6 +1,7 @@
 export type MedList = {
   generic: string;
   brand: string;
+  matchedGeneric?: string;
   matchedBrand?: string;
 };
 
@@ -109,7 +110,7 @@ export const sevenDayMedsList: MedList[] = [
   },
   {
     generic: 'tirzepatide',
-    brand: 'Mounjaro'
+    brand: 'Mounjaro, Zepbound'
   },
   {
     generic: 'dipyridamole-aspirin',
@@ -154,7 +155,7 @@ export const fiveDayMedsList: MedList[] = [
     brand: 'Warfarin'
   },
   {
-    generic: 'sildenafil',
+    generic: "sildenafil (for ED or Raynaud's; do not hold for PHTN)",
     brand: 'Viagra'
   },
   {
@@ -185,11 +186,15 @@ export const fourDayMedsList: MedList[] = [
   },
   {
     generic: 'bexagliflozin',
-    brand: 'Brenzavvy'
+    brand: 'Brenzavvy, Bexacat'
   },
   {
     generic: 'canagliflozin',
     brand: 'Invokana'
+  },
+  {
+    generic: 'sotagliflozin',
+    brand: 'Inpefa'
   },
 ];
 export const threeDayMedsList: MedList[] = [
@@ -460,6 +465,10 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Lotensin'
   },
   {
+    generic: 'quinapril',
+    brand: 'Accupril'
+  },
+  {
     generic: 'lisinopril',
     brand: 'Prinivil, Zestril, Qbrelis, Dapril'
   },
@@ -518,10 +527,6 @@ export const zeroDayMedsList: MedList[] = [
   {
     generic: 'spironolactone',
     brand: 'Aldactone, Carospir'
-  },
-  {
-    generic: 'tamsulosin',
-    brand: 'Flomax'
   },
   {
     generic: 'ferrous sulfate',

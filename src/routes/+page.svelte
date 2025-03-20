@@ -35,6 +35,7 @@
 	let mixedInsulinMedsFound = $state<MedList[]>();
 	let insulinPumpMedsFound = $state<MedList[]>();
 	let biologicMedsFound = $state<MedList[]>();
+	let medsFound = $state(true);
 
 	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
 		return medList
@@ -71,6 +72,21 @@
 		longInsulinMedsFound = filterMedsbyDays(lowerCaseText, longInsulinList);
 		mixedInsulinMedsFound = filterMedsbyDays(lowerCaseText, mixedInsulinList);
 		biologicMedsFound = filterMedsbyDays(lowerCaseText, biologicList);
+
+		medsFound = [
+			fourteenDayMedsFound,
+			sevenDayMedsFound,
+			fiveDayMedsFound,
+			fourDayMedsFound,
+			threeDayMedsFound,
+			twoDayMedsFound,
+			oneDayMedsFound,
+			zeroDayMedsFound,
+			twelveHourMedsFound,
+			longInsulinMedsFound,
+			mixedInsulinMedsFound,
+			biologicMedsFound
+		].some((list) => list.length > 0);
 	}
 
 	async function copy() {
@@ -128,19 +144,23 @@
 
 	{#if inputText}
 		<div bind:this={resultText} class="card px-4 py-6 card-dash bg-base-200">
-			– Medications to hold:
-			{@render renderMeds(fourteenDayMedsFound, 14)}
-			{@render renderMeds(sevenDayMedsFound, 7)}
-			{@render renderMeds(fiveDayMedsFound, 5)}
-			{@render renderMeds(fourDayMedsFound, 4)}
-			{@render renderMeds(threeDayMedsFound, 3)}
-			{@render renderMeds(twoDayMedsFound, 3)}
-			{@render renderMeds(oneDayMedsFound, 1)}
-			{@render renderMeds(zeroDayMedsFound, 0)}
-			{@render renderMeds(twelveHourMedsFound, 0.5)}
-			{@render renderMeds(longInsulinMedsFound, 0.5)}
-			{@render renderMeds(mixedInsulinMedsFound, 0.5)}
-			{@render renderMeds(biologicMedsFound, 0.5)}
+			{#if medsFound}
+				– Medications to hold:
+				{@render renderMeds(fourteenDayMedsFound, 14)}
+				{@render renderMeds(sevenDayMedsFound, 7)}
+				{@render renderMeds(fiveDayMedsFound, 5)}
+				{@render renderMeds(fourDayMedsFound, 4)}
+				{@render renderMeds(threeDayMedsFound, 3)}
+				{@render renderMeds(twoDayMedsFound, 3)}
+				{@render renderMeds(oneDayMedsFound, 1)}
+				{@render renderMeds(zeroDayMedsFound, 0)}
+				{@render renderMeds(twelveHourMedsFound, 0.5)}
+				{@render renderMeds(longInsulinMedsFound, 0.5)}
+				{@render renderMeds(mixedInsulinMedsFound, 0.5)}
+				{@render renderMeds(biologicMedsFound, 0.5)}
+			{:else}
+				– No medication to hold
+			{/if}
 		</div>
 	{/if}
 
