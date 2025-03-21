@@ -36,15 +36,15 @@
 			{:else if days == 0.5}
 				<h3>Hold for 12 Hours</h3>
 			{/if}
-			<div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-3">
+			<ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-3 mr-3">
 				{#each medlist as med}
-					<div>
+					<li class="">
 						{med.generic}
 						{#if med.brand}
 							({med.brand}){/if}
-					</div>
+					</li>
 				{/each}
-			</div>
+			</ul>
 		</div>
 	{/if}
 {/snippet}

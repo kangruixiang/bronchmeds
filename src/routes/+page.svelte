@@ -107,7 +107,6 @@
 	}
 
 	async function copy() {
-		console.log(resultText);
 		await navigator.clipboard.writeText(resultText.innerText);
 	}
 </script>
