@@ -113,6 +113,22 @@ export const sevenDayMedsList: MedList[] = [
     brand: 'Mounjaro, Zepbound'
   },
   {
+    generic: 'liraglutide',
+    brand: 'Victoza, Saxenda'
+  },
+  {
+    generic: 'dulaglutide',
+    brand: 'Trulicity'
+  },
+  {
+    generic: 'Exenatide',
+    brand: 'Byetta, Bydureon'
+  },
+  {
+    generic: 'lixisenatide',
+    brand: 'Adlyxin'
+  },
+  {
     generic: 'dipyridamole-aspirin',
     brand: 'Aggrenox'
   },
@@ -157,6 +173,10 @@ export const fiveDayMedsList: MedList[] = [
   {
     generic: "sildenafil",
     brand: 'Viagra, Revatio'
+  },
+  {
+    generic: 'avanafil',
+    brand: 'Stendra'
   },
   {
     generic: 'tadalafil',
@@ -209,6 +229,10 @@ export const threeDayMedsList: MedList[] = [
   {
     generic: 'dabigatran',
     brand: 'Pradaxa'
+  },
+  {
+    generic: 'edoxaban',
+    brand: 'Savaysa'
   },
   {
     generic: 'tofacitinib',
@@ -481,6 +505,22 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Altace'
   },
   {
+    generic: 'captopril',
+    brand: 'Capoten'
+  },
+  {
+    generic: 'fosinopril',
+    brand: 'Monopril'
+  },
+  {
+    generic: 'perindopril',
+    brand: 'Aceon'
+  },
+  {
+    generic: 'trandolapril',
+    brand: 'Mavik'
+  },
+  {
     generic: 'losartan',
     brand: 'Cozaar'
   },
@@ -521,12 +561,28 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Hydrodiuril'
   },
   {
+    generic: 'chlorthalidone',
+    brand: 'Thalitone, Hygroton'
+  },
+  {
+    generic: 'metolazone',
+    brand: 'Zaroxolyn'
+  },
+  {
+    generic: 'indapamide',
+    brand: 'Lozol'
+  },
+  {
     generic: 'triamterene',
     brand: 'Dyrenium, Dytac'
   },
   {
     generic: 'spironolactone',
     brand: 'Aldactone, Carospir'
+  },
+  {
+    generic: 'amiloride',
+    brand: 'Midamor'
   },
   {
     generic: 'ferrous sulfate',
@@ -552,6 +608,10 @@ export const longInsulinList: MedList[] = [
     generic: 'insulin degludec',
     brand: 'Tresiba'
   },
+  {
+    generic: 'insulin detemir',
+    brand: 'Levemir'
+  },
 ]
 export const mixedInsulinList: MedList[] = [
   {
@@ -560,7 +620,7 @@ export const mixedInsulinList: MedList[] = [
   },
   {
     generic: 'premixed insulin',
-    brand: 'Novolog Mix 70/30,  Novolog 70/30,  Novolog Mix 75/25, Novolog 75/25'
+    brand: 'Novolog Mix 70/30,  Novolog 70/30,  Novolog Mix 75/25, Novolog 75/25, Humalog Mix 50/50, Humalog Mix 75/25, Humulin Mix 70/30, Novolin Mix 70/30'
   },
 
 ]
