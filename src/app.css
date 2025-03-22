@@ -1,5 +1,6 @@
 @import 'tailwindcss';
-@plugin "@tailwindcss/typography";
+@import 'tw-golden-spacing';
+@plugin '@tailwindcss/typography';
 @plugin "daisyui";
 @plugin "daisyui/theme" {
 	name: 'light';

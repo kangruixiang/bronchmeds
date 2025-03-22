@@ -20,7 +20,8 @@
 	"dependencies": {
 		"@lucide/svelte": "^0.482.0",
 		"@tailwindcss/vite": "^4.0.14",
-		"tailwindcss": "^4.0.14"
+		"tailwindcss": "^4.0.14",
+		"tw-golden-spacing": "^4.0.0"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",

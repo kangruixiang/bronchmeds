@@ -161,7 +161,7 @@
 	{/snippet}
 
 	{#if inputText}
-		<div bind:this={resultText} class="card px-4 py-6 card-dash bg-base-200">
+		<div bind:this={resultText} class="card p-golden-lg card-dash bg-base-200">
 			{#if medsFound}
 				– Medications to hold:
 				{@render renderMeds(fourteenDayMedsFound, 14)}

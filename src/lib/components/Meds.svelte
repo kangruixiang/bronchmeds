@@ -18,7 +18,7 @@
 
 {#snippet renderMeds(medlist: MedList[], days: number)}
 	{#if medlist?.length > 0}
-		<div class="bg-base-300 rounded-lg px-8 pb-4 pt-4 prose max-w-none">
+		<div class="bg-base-300 rounded-lg p-golden-xl prose max-w-none">
 			{#if medlist == longInsulinList}
 				<h3>Long Acting Insulin</h3>
 				<h4>Normal dose night prior unless known issues with hypoglycemia and NPO.</h4>
