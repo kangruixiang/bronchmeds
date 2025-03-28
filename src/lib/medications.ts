@@ -529,6 +529,10 @@ export const zeroDayMedsList: MedList[] = [
     brand: 'Diovan, Entresto'
   },
   {
+    generic: 'telmisartan',
+    brand: 'Micardis'
+  },
+  {
     generic: 'irbesartan',
     brand: 'Aprovel, Avapro'
   },
