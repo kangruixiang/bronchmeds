@@ -73,7 +73,7 @@
 	<div class="collapse-content">
 		<div class="pt-6"></div>
 		<div>
-			<table class="table table-zebra">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>User Input</th>
