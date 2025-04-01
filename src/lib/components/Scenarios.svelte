@@ -5,7 +5,7 @@
 		{
 			input: 'losartan',
 			comment: 'generic name only',
-			full: '– Hold morning of procedure: losartanan',
+			full: '– Hold morning of procedure: losartan',
 			oneLine: 'losartan (morning of)'
 		},
 		{
