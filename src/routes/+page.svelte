@@ -16,13 +16,16 @@
 		fourteenDayMedsList,
 		biologicList
 	} from '$lib/medications';
-	import { Clipboard, Github, Mail } from '@lucide/svelte';
+	import { Check, Clipboard, Github, Mail } from '@lucide/svelte';
 
 	let inputText = $state('');
 	let resultText = $state();
 	let oneLineText = $state();
 	let includeBrand = $state(true);
 	let useCommon = $state(true);
+	let notification = $state('');
+	let copiedFull = $state(false);
+	let copiedOneLine = $state(false);
 
 	let fourteenDayMedsFound = $state<MedList[]>();
 	let sevenDayMedsFound = $state<MedList[]>();
@@ -119,11 +122,19 @@
 
 	async function copyFull() {
 		await navigator.clipboard.writeText(resultText.innerText);
+		copiedFull = true;
+		setTimeout(() => {
+			copiedFull = false;
+		}, 1000);
 	}
 
 	async function copyOneLine() {
 		const result = oneLineText.innerText.replace(/,\s*$/, '');
 		await navigator.clipboard.writeText(result);
+		copiedOneLine = true;
+		setTimeout(() => {
+			copiedOneLine = false;
+		}, 1000);
 	}
 </script>
 
@@ -191,11 +202,18 @@
 	{/each}{medList.length > 0 ? ', ' : ''}
 {/snippet}
 
-{#snippet copyClear(copyType: string, copy: () => void)}
+{#snippet copyClear(copyType: string, copyStatus: boolean, copy: () => void)}
 	<div class="flex w-full flex-col md:flex-row gap-y-2 gap-x-2">
-		<button onclick={copy} class="btn flex items-center gap-x-2 btn-primary grow"
-			><Clipboard size={18} />Copy {copyType}</button
-		>
+		<button
+			disabled={copyStatus}
+			onclick={copy}
+			class="btn flex items-center gap-x-2 btn-primary grow"
+			>{#if copyStatus}
+				<Check size={18} />Copied
+			{:else}
+				<Clipboard size={18} />Copy {copyType}
+			{/if}
+		</button>
 		<button onclick={() => (inputText = '')} class="btn grow">Clear</button>
 	</div>
 {/snippet}
@@ -249,7 +267,7 @@
 				class="toggle toggle-primary"
 			/>Include brand name
 		</label>
-		{@render copyClear('Full', copyFull)}
+		{@render copyClear('Full', copiedFull, copyFull)}
 	{/if}
 
 	{#if inputText}
@@ -284,7 +302,7 @@
 				class="toggle toggle-primary"
 			/>Use common name*
 		</label>
-		{@render copyClear('One Line', copyOneLine)}
+		{@render copyClear('One Line', copiedOneLine, copyOneLine)}
 		<p class="prose max-w-none pb-4">
 			* uses either generic or brand name, whichever is more recognizable (e.g. metformin instead of
 			Glucophage, Brilinta instead of ticagrelor). If neither are common, both names will be
