@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Instructions from '$lib/components/Instructions.svelte';
 	import Meds from '$lib/components/Meds.svelte';
+	import Scenarios from '$lib/components/Scenarios.svelte';
 	import {
 		oneDayMedsList,
 		threeDayMedsList,
@@ -65,16 +66,17 @@
 
 				let matchedCommon = commonAsList.find((b) => lowerCaseText.includes(b.toLowerCase())) || '';
 
-				if (matchedGeneric || matchedBrand) {
-					if (matchedBrand == 'revatio' || matchedBrand == 'adcirca') {
+				if (matchedGeneric || matchedBrand || matchedCommon) {
+					if (matchedBrand == 'Revatio' || matchedBrand == 'Adcirca') {
+						console.log('phtn meds');
 						return undefined;
 					}
 
-					if (matchedGeneric == 'sildenafil') {
+					if (matchedGeneric == 'sildenafil' && matchedBrand != 'Viagra') {
 						matchedGeneric = "sildenafil (for ED or Raynaud's; do not hold for PHTN)";
 					}
 
-					if (matchedGeneric == 'tadalafil') {
+					if (matchedGeneric == 'tadalafil' && matchedBrand != 'Cialis') {
 						matchedGeneric = "tadalafil (for ED or Raynaud's; do not hold for PHTN)";
 					}
 
@@ -181,6 +183,8 @@
 			{med.matchedGeneric}{#if med.matchedBrand}
 				/{med.matchedBrand}
 			{/if}
+		{:else if med.matchedBrand}
+			{med.matchedBrand}
 		{/if}
 		{#if medList == longInsulinMedsFound}
 			(normal vs 1/2 dose night before)
@@ -277,7 +281,7 @@
 		<div bind:this={oneLineText} class="card p-golden-lg card-dash bg-base-200">
 			<div>
 				{#if !medsFound}
-					– No medication to hold
+					No medication to hold
 				{:else}
 					{@render renderOneLine(fourteenDayMedsFound, 14)}
 					{@render renderOneLine(sevenDayMedsFound, 7)}
@@ -305,13 +309,14 @@
 		{@render copyClear('One Line', copiedOneLine, copyOneLine)}
 		<p class="prose max-w-none pb-4">
 			* uses either generic or brand name, whichever is more recognizable (e.g. metformin instead of
-			Glucophage, Brilinta instead of ticagrelor). If neither are common, both names will be
-			included (e.g. flavoxate/Urispas).
+			Glucophage, Brilinta instead of ticagrelor). If neither are common, both names are included
+			(e.g. flavoxate/Urispas).
 		</p>
 		<div class="divider"></div>
 	{/if}
 
 	<Instructions />
+	<Scenarios />
 	<Meds />
 </div>
 
