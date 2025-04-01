@@ -678,6 +678,10 @@ export const longInsulinList: MedList[] = [
     generic: 'insulin detemir',
     brand: 'Levemir'
   },
+  {
+    generic: 'insulin glarg-yfgn',
+    brand: 'Semglee'
+  },
 ]
 export const mixedInsulinList: MedList[] = [
   {
