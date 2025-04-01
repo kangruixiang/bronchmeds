@@ -1,8 +1,10 @@
 export type MedList = {
   generic: string;
   brand: string;
+  common?: string;
   matchedGeneric?: string;
   matchedBrand?: string;
+  matchedCommon?: string;
 };
 
 //effient both 5 and 7 days
@@ -106,11 +108,13 @@ export const fourteenDayMedsList: MedList[] = [
 export const sevenDayMedsList: MedList[] = [
   {
     generic: 'semaglutide',
-    brand: 'Ozempic, Wegovy'
+    brand: 'Ozempic, Wegovy',
+    common: 'Ozempic, Wegovy'
   },
   {
     generic: 'tirzepatide',
-    brand: 'Mounjaro, Zepbound'
+    brand: 'Mounjaro, Zepbound',
+    common: 'Mounjaro, Zepbound'
   },
   {
     generic: 'liraglutide',
@@ -118,7 +122,8 @@ export const sevenDayMedsList: MedList[] = [
   },
   {
     generic: 'dulaglutide',
-    brand: 'Trulicity'
+    brand: 'Trulicity',
+    common: 'Trulicity'
   },
   {
     generic: 'Exenatide',
@@ -130,11 +135,13 @@ export const sevenDayMedsList: MedList[] = [
   },
   {
     generic: 'dipyridamole-aspirin',
-    brand: 'Aggrenox'
+    brand: 'Aggrenox',
+    common: 'Aggrenox'
   },
   {
     generic: 'mycophenolate',
-    brand: 'CellCept'
+    brand: 'CellCept',
+    common: 'Cellcept'
   },
   {
     generic: 'azathioprine',
@@ -142,25 +149,29 @@ export const sevenDayMedsList: MedList[] = [
   },
   {
     generic: 'cyclosporine',
-    brand: 'Sandimmune'
+    brand: 'Sandimmune, Neoral'
   },
   {
     generic: 'tacrolimus',
-    brand: 'Prograf, Advagraf, Protopic'
+    brand: 'Prograf, Advagraf, Protopic',
+    common: 'Prograf'
   },
 ];
 export const fiveDayMedsList: MedList[] = [
   {
     generic: 'clopidogrel',
-    brand: 'Plavix'
+    brand: 'Plavix',
+    common: 'Plavix'
   },
   {
     generic: 'ticagrelor',
-    brand: 'Brilinta'
+    brand: 'Brilinta',
+    common: 'Brilinta'
   },
   {
     generic: 'effient',
-    brand: 'Prasugrel'
+    brand: 'Prasugrel',
+    common: 'Prasugrel'
   },
   {
     generic: 'dipyridamole',
@@ -168,7 +179,8 @@ export const fiveDayMedsList: MedList[] = [
   },
   {
     generic: 'coumadin',
-    brand: 'Warfarin'
+    brand: 'Warfarin',
+    common: 'Warfarin'
   },
   {
     generic: "sildenafil",
@@ -194,11 +206,13 @@ export const fiveDayMedsList: MedList[] = [
 export const fourDayMedsList: MedList[] = [
   {
     generic: 'empagliflozin',
-    brand: 'Jardiance'
+    brand: 'Jardiance',
+    common: 'Jardiance'
   },
   {
     generic: 'dapagliflozin',
-    brand: 'Farxiga'
+    brand: 'Farxiga',
+    common: 'Farxiga'
   },
   {
     generic: 'ertugliflozin',
@@ -220,15 +234,18 @@ export const fourDayMedsList: MedList[] = [
 export const threeDayMedsList: MedList[] = [
   {
     generic: 'apixaban',
-    brand: 'Eliquis'
+    brand: 'Eliquis',
+    common: 'Eliquis'
   },
   {
     generic: 'rivaroxaban',
-    brand: 'Xarelto'
+    brand: 'Xarelto',
+    common: 'Xarelto'
   },
   {
     generic: 'dabigatran',
-    brand: 'Pradaxa'
+    brand: 'Pradaxa',
+    common: 'Pradaxa'
   },
   {
     generic: 'edoxaban',
@@ -240,7 +257,8 @@ export const threeDayMedsList: MedList[] = [
   },
   {
     generic: 'baricitinib',
-    brand: 'Olumiant'
+    brand: 'Olumiant',
+    common: 'baricitinib'
   },
   {
     generic: 'upadacitinib',
@@ -250,7 +268,8 @@ export const threeDayMedsList: MedList[] = [
 export const twoDayMedsList: MedList[] = [
   {
     generic: 'cilostazol',
-    brand: 'Pletal'
+    brand: 'Pletal',
+    common: 'cilostazol'
   },
   {
     generic: 'chondroitin',
@@ -264,51 +283,59 @@ export const twoDayMedsList: MedList[] = [
 export const oneDayMedsList: MedList[] = [
   {
     generic: 'almotriptan',
-    brand: 'Axert'
+    brand: 'Axert',
   },
   {
     generic: 'eletriptan',
-    brand: 'Relpax'
+    brand: 'Relpax',
   },
   {
     generic: 'frovatritan',
-    brand: 'Frova'
+    brand: 'Frova',
   },
   {
     generic: 'naratriptan',
-    brand: 'Amerge'
+    brand: 'Amerge',
   },
   {
     generic: 'rizatriptan',
-    brand: 'Maxalt'
+    brand: 'Maxalt',
+    common: 'rizatriptan',
   },
   {
     generic: 'sumatriptan',
-    brand: 'Imitrex'
+    brand: 'Imitrex',
+    common: 'Imitrex',
   },
   {
     generic: 'zolmitriptan',
-    brand: 'Zomig'
+    brand: 'Zomig',
   },
   {
     generic: 'cholestyramine',
-    brand: 'Questran'
+    brand: 'Questran',
+    common: 'cholestyramine',
   },
   {
     generic: 'colestipol',
-    brand: 'Colestid'
+    brand: 'Colestid',
+    common: 'colestipol'
+
   },
   {
     generic: 'ezetimibe',
-    brand: 'Zetia'
+    brand: 'Zetia',
+    common: 'Zetia'
   },
   {
     generic: 'fenofibrate',
-    brand: 'Tricor'
+    brand: 'Tricor',
+    common: 'fenofibrate'
   },
   {
     generic: 'gemfibrozil',
-    brand: 'Lopid'
+    brand: '',
+    common: 'gemfibrozil'
   },
   {
     generic: 'niacin',
@@ -326,7 +353,7 @@ export const oneDayMedsList: MedList[] = [
 export const zeroDayMedsList: MedList[] = [
   {
     generic: 'lidocaine',
-    brand: 'Salonpas'
+    brand: 'Salonpas',
   },
   {
     generic: 'darifenacin',
@@ -342,7 +369,8 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'oxybutynin',
-    brand: 'Ditropan, Gelnique'
+    brand: 'Ditropan, Gelnique',
+    common: 'oxybutynin',
   },
   {
     generic: 'solifenacin',
@@ -370,7 +398,8 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'metformin',
-    brand: 'Glucophage'
+    brand: 'Glucophage',
+    common: 'metformin'
   },
   {
     generic: 'pioglitazone',
@@ -390,7 +419,8 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'sitagliptin',
-    brand: 'Januvia, Zituvio'
+    brand: 'Januvia, Zituvio',
+    common: 'Januvia'
   },
   {
     generic: 'saxagliptin',
@@ -406,7 +436,8 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'glipizide',
-    brand: 'Glucotrol'
+    brand: 'Glucotrol',
+    common: 'glipizide'
   },
   {
     generic: 'sodium citrate',
@@ -426,11 +457,13 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'sucralfate',
-    brand: 'Carafate'
+    brand: 'Carafate',
+    common: 'Carafate'
   },
   {
     generic: 'dicyclomine',
-    brand: 'Bentyl'
+    brand: 'Bentyl',
+    common: 'Bentyl',
   },
   {
     generic: 'hyoscyamine',
@@ -438,15 +471,18 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'loperamide',
-    brand: 'Imodium'
+    brand: 'Imodium',
+    common: 'Imodium'
   },
   {
     generic: 'diphenoxylate and atropine',
-    brand: 'Lomotil'
+    brand: 'Lomotil',
+    common: 'Lomotil'
   },
   {
     generic: 'ursodeoxycholic acid',
-    brand: 'Ursodiol'
+    brand: 'Ursodiol',
+    common: 'Ursodiol'
   },
   {
     generic: 'chenodeoxycholic acid',
@@ -462,15 +498,18 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'polyethylene glycol',
-    brand: 'PEG, MiraLAX, Glycolax'
+    brand: 'PEG, MiraLAX, Glycolax',
+    common: 'MiraLax'
   },
   {
     generic: 'docusate',
-    brand: 'Colace'
+    brand: 'Colace',
+    common: 'Colace'
   },
   {
     generic: 'BisaCODYL',
-    brand: 'Dulcolax'
+    brand: 'Dulcolax',
+    common: 'Dulcolax'
   },
   {
     generic: 'magnesium citrate',
@@ -478,15 +517,18 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'lactulose',
-    brand: 'Cholac, Generlac, Constulose, Chronulac'
+    brand: 'Cholac, Generlac, Constulose, Chronulac',
+    common: 'lactulose'
   },
   {
     generic: 'pancreatic enzymes',
-    brand: 'Creon, Pancreaze, Pertzye'
+    brand: 'Creon, Pancreaze, Pertzye',
+    common: 'Creon'
   },
   {
     generic: 'benazepril',
-    brand: 'Lotensin'
+    brand: 'Lotensin',
+    common: 'benazepril'
   },
   {
     generic: 'quinapril',
@@ -494,7 +536,8 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'lisinopril',
-    brand: 'Prinivil, Zestril, Qbrelis, Dapril'
+    brand: 'Prinivil, Zestril, Qbrelis, Dapril',
+    common: 'lisinopril',
   },
   {
     generic: 'enalapril',
@@ -502,47 +545,58 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'ramipril',
-    brand: 'Altace'
+    brand: 'Altace',
+    common: 'ramipril'
   },
   {
     generic: 'captopril',
-    brand: 'Capoten'
+    brand: 'Capoten',
+    common: 'captopril'
   },
   {
     generic: 'fosinopril',
-    brand: 'Monopril'
+    brand: 'Monopril',
+    common: 'fosinopril'
   },
   {
     generic: 'perindopril',
-    brand: 'Aceon'
+    brand: 'Aceon',
+    common: 'perindopril'
   },
   {
     generic: 'trandolapril',
-    brand: 'Mavik'
+    brand: 'Mavik',
+    common: 'trandolapril'
   },
   {
     generic: 'losartan',
-    brand: 'Cozaar'
+    brand: 'Cozaar',
+    common: 'losartan'
   },
   {
     generic: 'valsartan',
-    brand: 'Diovan, Entresto'
+    brand: 'Diovan, Entresto',
+    common: 'Entresto'
   },
   {
     generic: 'telmisartan',
-    brand: 'Micardis'
+    brand: 'Micardis',
+    common: 'telmisartan'
   },
   {
     generic: 'irbesartan',
-    brand: 'Aprovel, Avapro'
+    brand: 'Aprovel, Avapro',
+    common: 'irbesartan'
   },
   {
     generic: 'aliskiren',
-    brand: 'Tekturna, Rasilez'
+    brand: 'Tekturna, Rasilez',
+    common: 'aliskiren'
   },
   {
     generic: 'eplerenone',
-    brand: 'Inspra'
+    brand: 'Inspra',
+    common: 'eplerenone'
   },
   {
     generic: 'olmesartan',
@@ -550,27 +604,33 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'bumetanide',
-    brand: 'Bumex, Burinex'
+    brand: 'Bumex, Burinex',
+    common: 'Bumex'
   },
   {
     generic: 'furosemide',
-    brand: 'Lasix'
+    brand: 'Lasix',
+    common: 'Lasix'
   },
   {
     generic: 'torsemide',
-    brand: 'Demadex'
+    brand: 'Demadex',
+    common: 'torsemide'
   },
   {
     generic: 'hydrochlorothiazide',
-    brand: 'Hydrodiuril'
+    brand: 'Hydrodiuril',
+    common: 'hydrochlorothiazide'
   },
   {
     generic: 'chlorthalidone',
-    brand: 'Thalitone, Hygroton'
+    brand: 'Thalitone, Hygroton',
+    common: 'chlorthalidone'
   },
   {
     generic: 'metolazone',
-    brand: 'Zaroxolyn'
+    brand: 'Zaroxolyn',
+    common: 'metolazone'
   },
   {
     generic: 'indapamide',
@@ -582,7 +642,8 @@ export const zeroDayMedsList: MedList[] = [
   },
   {
     generic: 'spironolactone',
-    brand: 'Aldactone, Carospir'
+    brand: 'Aldactone, Carospir',
+    common: 'Aldactone'
   },
   {
     generic: 'amiloride',
@@ -600,7 +661,8 @@ export const zeroDayMedsList: MedList[] = [
 export const twelveHoursMedsList: MedList[] = [
   {
     generic: 'enoxaparin',
-    brand: 'Lovenox'
+    brand: 'Lovenox',
+    common: 'Lovenox'
   }
 ];
 export const longInsulinList: MedList[] = [
