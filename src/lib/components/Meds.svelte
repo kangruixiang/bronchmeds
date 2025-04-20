@@ -11,7 +11,8 @@
 		fourDayMedsList,
 		longInsulinList,
 		mixedInsulinList,
-		fourteenDayMedsList
+		fourteenDayMedsList,
+		considerList
 	} from '$lib/medications';
 	import { PillBottle } from '@lucide/svelte';
 </script>
@@ -25,6 +26,8 @@
 			{:else if medlist == mixedInsulinList}
 				<h3>Mixed Insulin</h3>
 				<h4>Hold vs 1/2 dose on morning of procedure.</h4>
+			{:else if medlist == considerList}
+				<h3>Consider Holding</h3>
 			{:else if days > 1}
 				<h3>
 					Hold for {days} Days
@@ -79,8 +82,10 @@
 		{@render renderMeds(mixedInsulinList, 0)}
 		<div class="divider"></div>
 		<div class="bg-base-300 rounded-lg px-8 pb-4 pt-4 prose max-w-none">
-			<h3>Biologics</h3>
+			<h3>Biologics and Immunosuppressants</h3>
 			<img src="biologics.png" alt="" />
 		</div>
+		<div class="divider"></div>
+		{@render renderMeds(considerList, 0)}
 	</div>
 </div>

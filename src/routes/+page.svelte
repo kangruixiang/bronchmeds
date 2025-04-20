@@ -15,7 +15,8 @@
 		mixedInsulinList,
 		longInsulinList,
 		fourteenDayMedsList,
-		biologicList
+		biologicList,
+		considerList
 	} from '$lib/medications';
 	import { Check, Clipboard, Github, Mail } from '@lucide/svelte';
 
@@ -41,6 +42,7 @@
 	let mixedInsulinMedsFound = $state<MedList[]>();
 	let insulinPumpMedsFound = $state<MedList[]>();
 	let biologicMedsFound = $state<MedList[]>();
+	let considerMedsFound = $state<MedList[]>();
 	let medsFound = $state(true);
 
 	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
@@ -105,6 +107,7 @@
 		longInsulinMedsFound = filterMedsbyDays(lowerCaseText, longInsulinList);
 		mixedInsulinMedsFound = filterMedsbyDays(lowerCaseText, mixedInsulinList);
 		biologicMedsFound = filterMedsbyDays(lowerCaseText, biologicList);
+		considerMedsFound = filterMedsbyDays(lowerCaseText, considerList);
 
 		medsFound = [
 			fourteenDayMedsFound,
@@ -118,7 +121,8 @@
 			twelveHourMedsFound,
 			longInsulinMedsFound,
 			mixedInsulinMedsFound,
-			biologicMedsFound
+			biologicMedsFound,
+			considerMedsFound
 		].some((list) => list.length > 0);
 	}
 
@@ -151,7 +155,9 @@
 				{:else if medList == insulinPumpMedsFound}
 					&nbsp;&nbsp;– Continue basal rate and hold bolus dosing:
 				{:else if medList == biologicMedsFound}
-					&nbsp;&nbsp;– Refer to biologics section below for optimal timing:
+					&nbsp;&nbsp;– Refer to biologics and immunosuppressants section below for review:
+				{:else if medList == considerMedsFound}
+					&nbsp;&nbsp;– Consider holding:
 				{:else if days > 1}
 					&nbsp;&nbsp;– Hold for {days} day:
 				{:else if days == 1}
@@ -193,7 +199,9 @@
 		{:else if medList == insulinPumpMedsFound}
 			(continue basal, hold bolus morning of)
 		{:else if medList == biologicMedsFound}
-			(refer to biologic section)
+			(refer to biologic and immunosuppresants below)
+		{:else if medList == considerMedsFound}
+			(consider holding)
 		{:else if days > 1}
 			({days} days)
 		{:else if days == 1}
@@ -257,6 +265,7 @@
 					{@render renderMeds(longInsulinMedsFound, 0.5)}
 					{@render renderMeds(mixedInsulinMedsFound, 0.5)}
 					{@render renderMeds(biologicMedsFound, 0.5)}
+					{@render renderMeds(considerMedsFound, 0.5)}
 				{/if}
 			</div>
 		</div>
@@ -295,6 +304,7 @@
 					{@render renderOneLine(longInsulinMedsFound, 0.5)}
 					{@render renderOneLine(mixedInsulinMedsFound, 0.5)}
 					{@render renderOneLine(biologicMedsFound, 0.5)}
+					{@render renderOneLine(considerMedsFound, 0.5)}
 				{/if}
 			</div>
 		</div>

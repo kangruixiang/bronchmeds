@@ -138,24 +138,7 @@ export const sevenDayMedsList: MedList[] = [
     brand: 'Aggrenox',
     common: 'Aggrenox'
   },
-  {
-    generic: 'mycophenolate',
-    brand: 'CellCept',
-    common: 'Cellcept'
-  },
-  {
-    generic: 'azathioprine',
-    brand: 'Azasan, Imuran, Jayempi'
-  },
-  {
-    generic: 'cyclosporine',
-    brand: 'Sandimmune, Neoral'
-  },
-  {
-    generic: 'tacrolimus',
-    brand: 'Prograf, Advagraf, Protopic',
-    common: 'Prograf'
-  },
+
 ];
 export const fiveDayMedsList: MedList[] = [
   {
@@ -251,19 +234,7 @@ export const threeDayMedsList: MedList[] = [
     generic: 'edoxaban',
     brand: 'Savaysa'
   },
-  {
-    generic: 'tofacitinib',
-    brand: 'Xeljanz'
-  },
-  {
-    generic: 'baricitinib',
-    brand: 'Olumiant',
-    common: 'baricitinib'
-  },
-  {
-    generic: 'upadacitinib',
-    brand: 'Rinvoq'
-  },
+
 ];
 export const twoDayMedsList: MedList[] = [
   {
@@ -747,5 +718,77 @@ export const biologicList: MedList[] = [
     generic: 'belimumab',
     brand: 'Benlysta'
   },
+  {
+    generic: 'tofacitinib',
+    brand: 'Xeljanz'
+  },
+  {
+    generic: 'baricitinib',
+    brand: 'Olumiant',
+    common: 'baricitinib'
+  },
+  {
+    generic: 'upadacitinib',
+    brand: 'Rinvoq'
+  },
+  {
+    generic: 'mycophenolate',
+    brand: 'CellCept',
+    common: 'Cellcept'
+  },
+  {
+    generic: 'azathioprine',
+    brand: 'Azasan, Imuran, Jayempi'
+  },
+  {
+    generic: 'cyclosporine',
+    brand: 'Sandimmune, Neoral'
+  },
+  {
+    generic: 'tacrolimus',
+    brand: 'Prograf, Advagraf, Protopic',
+    common: 'Prograf'
+  },
+]
+export const considerList: MedList[] = [
+  {
+    generic: 'oxycodone',
+    brand: 'OxyContin, Roxicodone'
+  },
+  {
+    generic: 'oxyCODONE-acetaminophen',
+    brand: 'Percocet'
+  },
+  {
+    generic: 'HYDROmorphone',
+    brand: 'Dilaudid, Exalgo'
+  },
+  {
+    generic: 'morphine',
+    brand: 'MS Contin, Kadian, Avinza'
+  },
+  {
+    generic: 'hydrocodone',
+    brand: 'Vicodin, Norco, Lortab, Zohydro ER'
+  },
+  {
+    generic: 'oxymorphone',
+    brand: 'Opana, Opana ER'
+  },
+  {
+    generic: 'fentanyl',
+    brand: 'Duragesic'
+  },
+  {
+    generic: 'methadone',
+    brand: 'Dolophine, Methadose'
+  },
+  {
+    generic: 'tramadol',
+    brand: 'Ultram, ConZip'
+  },
 ]
 
+// omega 3-dha-epa-fish oil (OMEGA 3)
+// co-enzyme Q-10
+//   (DILAUDID)
