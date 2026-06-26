@@ -1,3 +1,7 @@
+/* custom font */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900');
+
+
 @import 'tailwindcss';
 @import 'tw-golden-spacing';
 @plugin '@tailwindcss/typography';
@@ -17,6 +21,10 @@
 /* * {
 	border: 1px solid black;
 } */
+
+@theme {
+	--font-display: 'Jost',  'sans-serif';
+}
 
 h1 {
 	@apply text-4xl;

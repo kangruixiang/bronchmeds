@@ -18,7 +18,7 @@
 		biologicList,
 		considerList
 	} from '$lib/medications';
-	import { Check, Clipboard, Github, Mail } from '@lucide/svelte';
+	import { Check, Clipboard, Computer, Mail } from '@lucide/svelte';
 
 	let inputText = $state('');
 	let resultText = $state();
@@ -333,5 +333,5 @@
 <div class="mt-4 justify-end text-sm text-right flex gap-x-2">
 	Made by Kang.
 	<a href="mailto:kxiang.wakehealth.edu"><Mail /></a>
-	<a href="https://github.com/kangruixiang/bronchmeds"><Github /></a>
+	<a href="https://github.com/kangruixiang/bronchmeds"><Computer /></a>
 </div>
