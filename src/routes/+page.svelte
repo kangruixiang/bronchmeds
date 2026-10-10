@@ -2,6 +2,7 @@
 	import Instructions from '$lib/components/Instructions.svelte';
 	import Meds from '$lib/components/Meds.svelte';
 	import Scenarios from '$lib/components/Scenarios.svelte';
+	import { filterMedsbyDays } from './utils';
 	import {
 		oneDayMedsList,
 		threeDayMedsList,
@@ -21,76 +22,28 @@
 	import { Check, Clipboard, Computer, Mail } from '@lucide/svelte';
 
 	let inputText = $state('');
-	let resultText = $state();
-	let oneLineText = $state();
+	let resultText = $state<HTMLDivElement>();
+	let oneLineText = $state<HTMLDivElement>();
 	let includeBrand = $state(true);
 	let useCommon = $state(true);
-	let notification = $state('');
 	let copiedFull = $state(false);
 	let copiedOneLine = $state(false);
 
-	let fourteenDayMedsFound = $state<MedList[]>();
-	let sevenDayMedsFound = $state<MedList[]>();
-	let fiveDayMedsFound = $state<MedList[]>();
-	let threeDayMedsFound = $state<MedList[]>();
-	let fourDayMedsFound = $state<MedList[]>();
-	let twoDayMedsFound = $state<MedList[]>();
-	let oneDayMedsFound = $state<MedList[]>();
-	let zeroDayMedsFound = $state<MedList[]>();
-	let twelveHourMedsFound = $state<MedList[]>();
-	let longInsulinMedsFound = $state<MedList[]>();
-	let mixedInsulinMedsFound = $state<MedList[]>();
-	let insulinPumpMedsFound = $state<MedList[]>();
-	let biologicMedsFound = $state<MedList[]>();
-	let considerMedsFound = $state<MedList[]>();
+	let fourteenDayMedsFound = $state<MedList[]>([]);
+	let sevenDayMedsFound = $state<MedList[]>([]);
+	let fiveDayMedsFound = $state<MedList[]>([]);
+	let threeDayMedsFound = $state<MedList[]>([]);
+	let fourDayMedsFound = $state<MedList[]>([]);
+	let twoDayMedsFound = $state<MedList[]>([]);
+	let oneDayMedsFound = $state<MedList[]>([]);
+	let zeroDayMedsFound = $state<MedList[]>([]);
+	let twelveHourMedsFound = $state<MedList[]>([]);
+	let longInsulinMedsFound = $state<MedList[]>([]);
+	let mixedInsulinMedsFound = $state<MedList[]>([]);
+	let insulinPumpMedsFound = $state<MedList[]>([]);
+	let biologicMedsFound = $state<MedList[]>([]);
+	let considerMedsFound = $state<MedList[]>([]);
 	let medsFound = $state(true);
-
-	function filterMedsbyDays(lowerCaseText: string, medList: MedList[]) {
-		return medList
-			.map(({ generic, brand, common }) => {
-				// convert generic string to a list
-				const genericAsList = generic.split(',').map((b) => b.trim());
-
-				// convert brand string to a list
-				const brandAsList = brand.split(',').map((b) => b.trim());
-
-				// convert common string to a list
-				let commonAsList: string[] = [];
-				if (common) {
-					commonAsList = common.split(',').map((b) => b.trim());
-				}
-
-				// find generic name
-				let matchedGeneric = genericAsList.find((b) => lowerCaseText.includes(b.toLowerCase()));
-
-				// find brand name
-				let matchedBrand = brandAsList.find((b) => lowerCaseText.includes(b.toLowerCase())) || '';
-
-				let matchedCommon = commonAsList.find((b) => lowerCaseText.includes(b.toLowerCase())) || '';
-
-				if (matchedGeneric || matchedBrand || matchedCommon) {
-					if (matchedBrand == 'Revatio' || matchedBrand == 'Adcirca') {
-						console.log('phtn meds');
-						return undefined;
-					}
-
-					if (matchedGeneric == 'sildenafil' && matchedBrand != 'Viagra') {
-						matchedGeneric = "sildenafil (for ED or Raynaud's; do not hold for PHTN)";
-					}
-
-					if (matchedGeneric == 'tadalafil' && matchedBrand != 'Cialis') {
-						matchedGeneric = "tadalafil (for ED or Raynaud's; do not hold for PHTN)";
-					}
-
-					return {
-						matchedGeneric,
-						matchedBrand,
-						matchedCommon
-					};
-				}
-			})
-			.filter(Boolean);
-	}
 
 	function parseMedications() {
 		let lowerCaseText = inputText.toLowerCase();
@@ -127,6 +80,7 @@
 	}
 
 	async function copyFull() {
+		if (!resultText) return;
 		await navigator.clipboard.writeText(resultText.innerText);
 		copiedFull = true;
 		setTimeout(() => {
@@ -135,6 +89,7 @@
 	}
 
 	async function copyOneLine() {
+		if (!oneLineText) return;
 		const result = oneLineText.innerText.replace(/,\s*$/, '');
 		await navigator.clipboard.writeText(result);
 		copiedOneLine = true;
@@ -167,7 +122,7 @@
 				{:else if days == 0.5}
 					&nbsp;&nbsp;– Hold for 12 hours:
 				{/if}
-				{#each medList as med, i}
+				{#each medList as med, i (i)}
 					{#if med.matchedGeneric}
 						{med.matchedGeneric}{#if med.matchedBrand && includeBrand}
 							&nbsp;({med.matchedBrand})
@@ -182,7 +137,7 @@
 {/snippet}
 
 {#snippet renderOneLine(medList: MedList[], days: number)}
-	{#each medList as med, i}
+	{#each medList as med, i (i)}
 		{#if med.matchedCommon && useCommon}
 			{med.matchedCommon}
 		{:else if med.matchedGeneric}
@@ -241,8 +196,7 @@
 		bind:value={inputText}
 		oninput={parseMedications}
 		class="textarea w-full textarea-primary"
-		placeholder="Paste or Type Medication Names"
-	></textarea>
+		placeholder="Paste or Type Medication Names"></textarea>
 
 	{#if inputText}
 		<div class="divider"></div>
